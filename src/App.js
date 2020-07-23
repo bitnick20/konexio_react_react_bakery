@@ -1,4 +1,8 @@
 import React from 'react';
+import Add from './components/Add';
+import List from './components/List';
+import Pay from './components/Pay';
+import Button from './components/core/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -8,32 +12,54 @@ class App extends React.Component {
   constructor (props) {
     super(props);
 
+
     this.state = {
-      activateTab: 'add',
-      items: [],
-      // activeTab: add,
+      activeTab: 'add',
+      items: []
     }
 
-    // this.state = {
-    //   activeTab: add,
-    //   heart: 120,
-    //   temperature: -10,
-    //   steps: 3000,
-    // }
-
-
-
-
+    this.onClickTabAdd = this.onClickTabAdd.bind(this);
+    this.onClickTabList = this.onClickTabList.bind(this);
+    this.onClickTabPay = this.onClickTabPay.bind(this);
   }
+  
+
+onClickTabAdd () {
+  console.log("App#onClickTabAdd :");
+  this.setState({activeTab: 'add'});
+}
+
+onClickTabList () {
+  console.log("App#onClickTabList :", this.state);
+  this.setState({activeTab: 'list'});
+}
+
+onClickTabPay () {
+  console.log("App#oonClickTabPay :", this.state);
+  this.setState({activeTab: 'pay'});
+}
+
+
 
   render () {
     console.log("App#render :", this.state);
     return (
-      <div>
-        <p>Hello Ali, c'est fatiguant !</p>
-        {/* <Add/>
-        <List/>
-        <Pay/> */}
+      <div className="container-fluid">
+        <div className="row">
+          <h1>Bakery</h1>
+        </div>
+
+        <div className="row">
+          <div>
+            <Button onClick={this.onClickTabAdd}>Add</Button>
+          </div>
+          <div>
+            <Button onClick={this.onClickTabList}>List</Button>
+          </div>
+          <div>
+            <Button onClick={this.onClickTabPay}>Pay</Button>
+          </div>
+        </div>
       </div>
     );
   }

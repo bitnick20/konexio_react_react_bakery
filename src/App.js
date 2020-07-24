@@ -3,6 +3,7 @@ import Add from './components/Add';
 import List from './components/List';
 import Pay from './components/Pay';
 import Button from './components/core/Button';
+import Slider from './components/core/Slider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -18,6 +19,7 @@ class App extends React.Component {
       items: []
     }
 
+    // Je dois binder les méthodes afin qu'elles soient accessibles das le autres classes
     this.onClickTabAdd = this.onClickTabAdd.bind(this);
     this.onClickTabList = this.onClickTabList.bind(this);
     this.onClickTabPay = this.onClickTabPay.bind(this);
@@ -59,6 +61,20 @@ onClickTabPay () {
           <div>
             <Button onClick={this.onClickTabPay}>Pay</Button>
           </div>
+        </div>
+
+        <div className={"row"}>
+          <div className="col-9">
+            <Add onChange={this.onChangeInput}/>
+          </div>
+          <div className="col-3">
+            {/* <Button onClick={this.onClickTabAdd}>Add</Button> */}
+          </div>
+          
+        </div>
+
+        <div >
+          {/* <Slider/> */}
         </div>
       </div>
     );

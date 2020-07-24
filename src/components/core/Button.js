@@ -19,12 +19,12 @@ import React from 'react';
 // je peux utiliser une fonction component
 
 const Button = ({children, isSelected, onClick}) => {
-    // console.log("cmp/core/Button onclick :", onClick);
+    // console.log("cmp/core/Button onClick :", onClick);
     // console.log("cmp/core/Button isSelected :", isSelected);
-    // console.log("cmp/core/Button children:", isSelected);
+    // console.log("cmp/core/Button children:", children);
     return (
             <button  
-                className="btn btn-primary mr-1"
+                className="btn btn-outline-primary mr-1"
                 onClick={onClick}  
                 isSelected={isSelected}>
                     {children} 

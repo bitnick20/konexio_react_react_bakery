@@ -9,20 +9,20 @@ class Add extends React.Component {
         super (props);
 
         this.state = {
-            input: ' ',
+            input: '',
             price: 1,
-            event: ' '
         }
 
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onChangeSlider = this.onChangeSlider.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChangeInput (e) {
-        console.log("cmp/Add#onChangeInput :", this);
-        console.log("cmp/Add#onChangeInput envent :", e);
+    onChangeInput (event) {
+        // console.log("cmp/Add#onChangeInput :", this.state);
+        // console.log("cmp/Add#onChangeInput envent :", event);
         this.setState({
-            event: e.target.value
+            input: event.target.value
         })
     }
 
@@ -30,6 +30,14 @@ class Add extends React.Component {
         // console.log("cmp/Add#onChangeSlider :", this.state);
         this.setState({
             price: val
+        })
+    }
+
+    onSubmit () {
+        console.log("cmp/Add#onSubmit :", this.state.price, this.state.input);
+        this.setState({
+            input: '',
+            price: 1
         })
     }
 
@@ -44,18 +52,19 @@ class Add extends React.Component {
                     type="text" class="form-control" 
                     placeholder="item" aria-label="item" 
                     aria-describedby="button-addon2"
-                    value={this.state.event}
+                    value={this.state.input}
                     onChange={this.onChangeInput}/>
 
                 <div class="input-group-append">
-                    <button class="btn btn-outline-primary" 
-                        type="button" id="button-addon2">
+                    <Button class="btn btn-outline-primary" 
+                        type="button" id="button-addon2"
+                        onClick={this.onSubmit}>
                             Add
-                    </button>
+                    </Button>
                 </div>
                 </div>
 
-
+                <p>{this.state.price} €</p>
                 <Slider 
                     onChange={this.onChangeSlider}
                     value={this.state.price}/>

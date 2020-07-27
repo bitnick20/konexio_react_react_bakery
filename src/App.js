@@ -23,11 +23,12 @@ class App extends React.Component {
     this.onClickTabAdd = this.onClickTabAdd.bind(this);
     this.onClickTabList = this.onClickTabList.bind(this);
     this.onClickTabPay = this.onClickTabPay.bind(this);
+    this.onAdd = this.onAdd.bind(this);
   }
   
 
 onClickTabAdd () {
-  console.log("App#onClickTabAdd :");
+  console.log("App#onClickTabAdd : ", this.state);
   this.setState({activeTab: 'add'});
 }
 
@@ -41,6 +42,33 @@ onClickTabPay () {
   this.setState({activeTab: 'pay'});
 }
 
+onAdd (price, input) {
+  console.log("App#onAdd :");
+
+}
+
+
+
+renderTabAdd () {
+  if(this.state.activeTab === 'add') {
+    return <Add /> 
+  }
+  return null;
+}
+
+renderTabList () {
+  if(this.state.activeTab === 'list') {
+    return <List />
+  }
+  return null
+}
+
+renderTabPay () {
+  if(this.state.activeTab === 'pay') {
+    return <Pay />
+  }
+  return null;
+}
 
 
   render () {
@@ -54,27 +82,18 @@ onClickTabPay () {
         <div className="row">
           <div>
             <Button onClick={this.onClickTabAdd}>Add</Button>
-          </div>
-          <div>
             <Button onClick={this.onClickTabList}>List</Button>
-          </div>
-          <div>
             <Button onClick={this.onClickTabPay}>Pay</Button>
           </div>
         </div>
 
         <div className={"row"}>
           <div className="col-9">
-            <Add onChange={this.onChangeInput}/>
+            {this.renderTabAdd()}
+            {this.renderTabList()}
+            {this.renderTabPay()}
+            {/* <Add onChange={this.onChangeInput}/> */}
           </div>
-          <div className="col-3">
-            {/* <Button onClick={this.onClickTabAdd}>Add</Button> */}
-          </div>
-          
-        </div>
-
-        <div >
-          {/* <Slider/> */}
         </div>
       </div>
     );

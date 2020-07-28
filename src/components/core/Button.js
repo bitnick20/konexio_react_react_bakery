@@ -18,14 +18,20 @@ import React from 'react';
 // comme c'est un component dump (pas intelligent), 
 // je peux utiliser une fonction component
 
-const Button = ({children,onClick}) => {
+const Button = ({children, isSelected, onClick}) => {
     // console.log("cmp/core/Button onClick :", onClick);
     // console.log("cmp/core/Button isSelected :", isSelected);
     // console.log("cmp/core/Button children:", children);
+    let btnClass = 'btn-outline-primary mr-1';
+    if(isSelected === true) {
+        btnClass= 'btn-primary mr-1';
+    }
     return (
             <button  
-                className="btn btn-outline-primary mr-1"
-                onClick={onClick}>
+                // className="btn btn-outline-primary mr-1"
+                // isSelected={isSelected}
+                onClick={onClick}
+                className={`btn ${btnClass}`}>
                     {children} 
             </button>
     )

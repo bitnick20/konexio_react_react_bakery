@@ -81,9 +81,21 @@ renderTabPay () {
 
         <div className="row">
           <div>
-            <Button onClick={this.onClickTabAdd}>Add</Button>
-            <Button onClick={this.onClickTabList}>List</Button>
-            <Button onClick={this.onClickTabPay}>Pay</Button>
+            <Button 
+            onClick={this.onClickTabAdd}
+            isSelected={this.state.activeTab === 'add'}>
+              Add
+            </Button>
+            <Button 
+            isSelected={this.state.activeTab === 'list'} 
+            onClick={this.onClickTabList}>
+              List
+            </Button>
+            <Button 
+            isSelected={this.state.activeTab === 'pay'}
+            onClick={this.onClickTabPay}>
+              Pay
+            </Button>
           </div>
         </div>
 

@@ -58,6 +58,7 @@ class Add extends React.Component {
                 <div class="input-group-append">
                     <Button class="btn btn-outline-primary" 
                         type="button" id="button-addon2"
+                        isSelected={this.props.isSelected}
                         onClick={this.onSubmit}>
                             Add
                     </Button>

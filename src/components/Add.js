@@ -33,13 +33,26 @@ class Add extends React.Component {
         })
     }
 
-    onSubmit () {
-        console.log("cmp/Add#onSubmit :", this.state.price, this.state.input);
-        this.setState({
-            input: '',
-            price: 1
-        })
+    // onSubmit () {
+    //     console.log("cmp/Add#onSubmit :", this.state.price, this.state.input);
+    //     this.setState({
+    //         input: '',
+    //         price: 1
+    //     })
+    // }
+
+    onSubmit() {
+        console.log('cmp/Add#onSubmit');
+        console.log('cmp/Add#onSubmit this.state', this.state);
+        const {
+            price,
+            input
+        } = this.state;
+        // je récupère la props de la méthode onAdd du component App
+        //  attention les paramètres doivent être identiques (price, input)
+        this.props.onSubmit(price, input);
     }
+
 
 
 
@@ -48,21 +61,20 @@ class Add extends React.Component {
         return (
             <div>
                 <div className="input-group mb-3">
-                <input 
-                    type="text" class="form-control" 
-                    placeholder="item" aria-label="item" 
-                    aria-describedby="button-addon2"
-                    value={this.state.input}
-                    onChange={this.onChangeInput}/>
+                    <input 
+                        type="text" class="form-control" 
+                        placeholder="item" 
+                        // aria-label="item" 
+                        // aria-describedby="button-addon2"
+                        value={this.state.input}
+                        onChange={this.onChangeInput}/>
 
-                <div class="input-group-append">
-                    <Button class="btn btn-outline-primary" 
-                        type="button" id="button-addon2"
-                        isSelected={this.props.isSelected}
-                        onClick={this.onSubmit}>
-                            Add
-                    </Button>
-                </div>
+                    <div class="input-group-append">
+                        <Button 
+                            onClick={this.onSubmit}>
+                                Add
+                        </Button>
+                    </div>
                 </div>
 
                 <p>{this.state.price} €</p>

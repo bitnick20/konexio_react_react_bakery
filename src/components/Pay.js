@@ -1,12 +1,13 @@
 import React from 'react';
+import Card from './product/Card';
 
 
 class Pay extends React.Component {
     render () {
-        // console.log("cmp/#Pay this props :", this.props);
+        console.log("cmp/#Pay this props :", this.props);
         return (
             <div>
-                Pay
+                <Card />
             </div>
         );
     }
